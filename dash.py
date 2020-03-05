@@ -6,7 +6,6 @@ import tornado.web
 import os
 
 import argparse
-# from rc3dr.robot_arm import RobotArmHandler, RobotDepthImageHandler
 from rc3dr.rc3dr import RC3DR
 import numpy as np
 
