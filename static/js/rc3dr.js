@@ -229,6 +229,7 @@ export class RC3DR{
         // Robot control
 
         render_control : function(){
+            this.renderer.setPixelRatio( window.devicePixelRatio )
             this.renderer.setClearColor('#F8F9F9', 1)
             this.renderer.antialias = true
             this.renderer.setSize(this.canvas_control.clientWidth, this.canvas_control.clientHeight)
@@ -490,12 +491,18 @@ export class RC3DR{
         // Depth Camera
 
         render_depth : function(){
+            this.renderer.setPixelRatio( 1 )
             this.renderer.antialias = false
             this.renderer.setClearColor('#FFFFFF', 1)
-            this.renderer.setSize(this.canvas_depth.clientWidth, this.canvas_depth.clientHeight)
-            this.renderer.setSize(this.canvas_control.clientWidth, this.canvas_control.clientHeight)
-            this.canvas_depth.width = this.canvas_hidden.width
-            this.canvas_depth.height = this.canvas_hidden.height
+            // this.renderer.setSize(this.canvas_control.clientWidth, this.canvas_control.clientHeight)
+            this.canvas_depth.width = 625
+            this.canvas_depth.height = 625
+            // this.renderer.setSize(this.canvas_depth.clientWidth, this.canvas_depth.clientHeight)
+            this.renderer.setSize(625, 625)
+            // this.canvas_depth.width = this.canvas_hidden.width
+            // this.canvas_depth.height = this.canvas_hidden.height
+            // fix resolution
+            
 
             let ctx = this.renderer.getContext()
 
