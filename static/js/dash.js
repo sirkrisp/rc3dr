@@ -26,7 +26,7 @@ export class Dash{
 
             template:`
             <div class="vue-root">
-                <div class="dash-title">RC3DR - Robot-guided 3D reconstruction:</div>
+                <div class="dash-title">RC3DR - Robot-controlled 3D reconstruction:</div>
                 <div class="dash">
                     <robot-card filename="/media/models/urdf/6dof_macro.urdf" target-obj-filename="/media/models/obj/cow.obj" width="500" height="500">
                     </robot-card>
