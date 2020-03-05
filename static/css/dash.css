@@ -1,0 +1,15 @@
+@import "dashCard.css";
+
+.dash{
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.dash-title{
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkgreen;
+    margin: 10px;
+}

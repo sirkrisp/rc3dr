@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!-- First line must be verson!! -->
+<!-- 
+rev_config1 = { "Link" : [0,0,3], "RotAxis" : [0,0,1], "AngleLimits" : [0, 2*np.pi]}
+rev_config2 = { "Link" : [0,0,3], "RotAxis" : [0,1,0], "AngleLimits" : [0, 2*np.pi]}
+rev_config3 = { "Link" : [0,0,2], "RotAxis" : [0,1,0], "AngleLimits" : [0, 2*np.pi]}
+rev_config4 = { "Link" : [0,0,2], "RotAxis" : [1,0,0], "AngleLimits" : [0, 2*np.pi]}
+rev_config5 = { "Link" : [0,0,1], "RotAxis" : [0,1,0], "AngleLimits" : [0, 2*np.pi]}
+rev_config6 = { "Link" : [0,0,1], "RotAxis" : [1,0,0], "AngleLimits" : [0, 2*np.pi]} 
+-->
+
+<robot name="multiple">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <link name="u0">
+    <visual>
+      <geometry>
+        <box size="0.2301 0.2301 0.6"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.3"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+
+  <link name="u1">
+    <visual>
+      <geometry>
+        <box size="0.23 0.23 1.5"/>
+        <!-- <cylinder length="0.6" radius="0.2"/> -->
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.75"/>
+      <material name="blue"/>
+    </visual>
+  </link>
+
+  <link name="u2">
+    <visual>
+      <geometry>
+        <box size="0.2301 0.2301 2"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+  <link name="u3">
+    <visual>
+      <geometry>
+        <box size="0.23 0.23 2"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="0 0 1"/>
+    </visual>
+  </link>
+
+  <link name="u4">
+    <visual>
+      <geometry>
+        <box size="0.2301 0.2301 0.6"/>
+      </geometry>
+      <material name="white"/>
+      <origin rpy="0 0 0" xyz="0 0 0.3"/>
+    </visual>
+  </link>
+
+  <link name="u5">
+    <visual>
+      <geometry>
+        <box size="0.23 0.23 0.6"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="0 0 0.3"/>
+    </visual>
+  </link>
+
+  <link name="u6">
+    <visual>
+      <geometry>
+        <box size="0.2301 0.2301 0.6"/>
+      </geometry>
+      <material name="white"/>
+      <origin rpy="0 0 0" xyz="0 0 0.3"/>
+    </visual>
+  </link>
+
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="u0"/>
+  </joint>
+
+  <joint name="u01" type="revolute">
+    <parent link="u0"/>
+    <child link="u1"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.6"/>
+    <limit lower="-3" upper="3" effort="1" velocity="1"/>
+  </joint>
+
+  <joint name="u12" type="revolute">
+    <parent link="u1"/>
+    <child link="u2"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 1.5"/>
+    <limit lower="-3" upper="3" effort="1" velocity="1"/>
+  </joint>
+
+  <joint name="u23" type="revolute">
+    <parent link="u2"/>
+    <child link="u3"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 2"/>
+    <limit lower="-3" upper="3" effort="1" velocity="1"/>
+  </joint>
+
+  <joint name="u34" type="revolute">
+    <parent link="u3"/>
+    <child link="u4"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 2"/>
+    <limit lower="-3" upper="3" effort="1" velocity="1"/>
+  </joint>
+
+  <joint name="u45" type="revolute">
+    <parent link="u4"/>
+    <child link="u5"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.6"/>
+    <limit lower="-3" upper="3" effort="1" velocity="1"/>
+  </joint>
+
+  <joint name="u56" type="revolute">
+    <parent link="u5"/>
+    <child link="u6"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0 0 0.6"/>
+    <limit lower="-3" upper="3" effort="1" velocity="1"/>
+  </joint>
+
+</robot>

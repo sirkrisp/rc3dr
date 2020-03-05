@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot name="multiple" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="x" value="1 0 0" />
+  <xacro:property name="y" value="0 1 0" />
+  <xacro:property name="z" value="0 0 1" />
+
+  <xacro:macro name="mylink" params="name width len material">
+    <link name="${name}">
+        <visual>
+            <geometry>
+                <box size="${width} ${width} ${len}"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 ${len/2}"/>
+            <material name="${material}"/>
+        </visual>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="module" params="name child len width childaxis material">
+    <xacro:mylink name="${name}" width="${width}" len="${len}" material="${material}"/>
+    <joint name="${name}${child}" type="revolute">
+      <parent link="${name}"/>
+      <child link="${child}"/>
+      <axis xyz="${childaxis}"/>
+      <origin xyz="0 0 ${len}"/>
+      <limit lower="-3.14" upper="3.14" effort="1" velocity="1"/>
+    </joint>
+  </xacro:macro>
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="red">
+    <color rgba="0.8 0 0 1"/>
+  </material>
+
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base"/>
+    <origin xyz="0 0 2"/>
+  </joint>
+
+  <xacro:mylink name="ee" width="0.19" len="0.5" material="red"/>
+
+  <xacro:module name="base" child="u1" childaxis="${y}" len="0.1" width="0.205" material="blue"/>
+  <xacro:module name="u1" child="u2" childaxis="${x}" len="0.1" width="0.204" material="white"/>
+  <xacro:module name="u2" child="u3" childaxis="-1 0 0" len="2" width="0.203" material="blue"/>
+  <xacro:module name="u3" child="u4" childaxis="${z}" len="2" width="0.202" material="white"/>
+  <xacro:module name="u4" child="u5" childaxis="${x}" len="0.1" width="0.201" material="blue"/>
+  <xacro:module name="u5" child="ee" childaxis="${y}" len="0.1" width="0.2" material="white"/>
+
+</robot>
