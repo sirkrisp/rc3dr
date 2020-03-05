@@ -18,11 +18,7 @@ To get startet have a look at the jupyter notebook **RC3DR.ipynb**. Note, the *j
 - igl
 - pyquaternion
 
-<<<<<<< HEAD
 You will also need a **Cuda** enabled GPU.
 
 
 ![blubb](res/Poster.jpg)
-=======
-![blubb](res/Poster.jpg)
->>>>>>> fbf77e643cd4834230f2b94d00da042db061d71c
