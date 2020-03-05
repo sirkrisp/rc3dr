@@ -1,5 +1,5 @@
 # RC3DR
-Robotic Controlled 3D Reconstruction
+Robot-controlled 3D reconstruction
 
 
 This project is heavily based on the following two papers:
